@@ -1,0 +1,15 @@
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #949494;
+  width: 20vw;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.undertext {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
