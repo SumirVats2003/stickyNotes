@@ -1,6 +1,6 @@
 <h1 class="text-center">Login</h1>
 <div class="centered">
-  <form>
+  <form (ngSubmit)="handleSubmit($event)">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input
@@ -8,6 +8,8 @@
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
       />
       <div id="emailHelp" class="form-text">
         We'll never share your email with anyone else.
@@ -15,7 +17,13 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
     </div>
     <div class="undertext">
       <button type="submit" class="btn btn-primary">Submit</button>
