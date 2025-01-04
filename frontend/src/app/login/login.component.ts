@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-@Injectable({ providedIn: 'root' })
 export class LoginComponent {
   email: string = '';
   password: string = '';

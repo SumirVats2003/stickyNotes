@@ -15,6 +15,22 @@ const router = express.Router();
  */
 
 // POST /login
+
+router.get("/allusers", async (req, res) => {
+  try {
+    const users = await userDB.find();
+    if (!users || users.length === 0) {
+      return res.status(404).json({ message: "No users found" });
+    }
+
+    res.status(200).json(users);
+  } catch (err) {
+    res
+      .status(500)
+      .send({ message: "GET /allusers : Server ran into an error" });
+  }
+});
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 

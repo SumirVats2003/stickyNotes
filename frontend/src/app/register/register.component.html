@@ -1,6 +1,6 @@
 <h1 class="text-center">Register</h1>
 <div class="centered">
-  <form>
+  <form (submit)="userRegistration()">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input
@@ -8,6 +8,8 @@
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
+        name="email"
+        [(ngModel)]="email"
       />
       <div id="emailHelp" class="form-text">
         We'll never share your email with anyone else.
@@ -15,7 +17,13 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="password"
+        [(ngModel)]="password"
+      />
     </div>
     <div class="undertext">
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -31,5 +39,8 @@
       </p>
     </div>
   </form>
+</div>
+<div>
+  <a routerLink="/register/allusers">All users</a>
 </div>
 <router-outlet></router-outlet>
