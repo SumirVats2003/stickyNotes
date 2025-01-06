@@ -13,15 +13,15 @@ import { User } from '../user';
 export class RegisterComponent {
   email = '';
   password = '';
-  allUsers: User[] = [];
+  allUsers: User[] | null = [];
 
   userService = inject(UserService);
 
-  constructor() {
-    // this.userService.getRegisteredUsers();
-    console.log(this.userService.users);
-    this.getAllUsers();
-  }
+  // constructor() {
+  //   // this.userService.getRegisteredUsers();
+  //   console.log(this.userService.users);
+  //   // this.getAllUsers();
+  // }
 
   getAllUsers() {
     this.userService.users.subscribe((data) => {
