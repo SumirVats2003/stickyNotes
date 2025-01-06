@@ -16,11 +16,19 @@ export interface LoginResponse {
   message: string;
 }
 
-export interface TodosResponse {
+export interface Todos {
   color: string;
   description: string;
   title: string;
   userId: string;
-  __v: number;
-  _id: string;
+}
+
+export interface TodosResponse {
+  message: string;
+  newNote: {
+    color: string;
+    description: string;
+    title: string;
+    userId: string;
+  };
 }

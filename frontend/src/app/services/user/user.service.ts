@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { LoginResponse, TodosResponse, User } from '../../user';
+import { LoginResponse, Todos, TodosResponse, User } from '../../user';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   private allUsers$ = new BehaviorSubject<User[] | null>(null);
-  private allTodos$ = new BehaviorSubject<TodosResponse[] | null>(null);
+  private allTodos$ = new BehaviorSubject<Todos[] | null>(null);
   constructor(private http: HttpClient, private router: Router) {
     console.log('UserService Created');
   }
@@ -76,7 +76,7 @@ export class UserService {
   }
 
   getAllNotes(userId: string) {
-    this.http.get<TodosResponse[]>(`${this.url}/${userId}`).subscribe({
+    this.http.get<Todos[]>(`${this.url}/${userId}`).subscribe({
       next: (response) => {
         console.log(response);
         if (response) {
@@ -85,5 +85,29 @@ export class UserService {
         }
       },
     });
+  }
+
+  addTodo(todo: Todos) {
+    console.log(todo);
+    this.http
+      .post<TodosResponse>(`${this.url}/${todo.userId}/newnote`, todo)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response.newNote) {
+            const notes = this.allTodos$.value || [];
+            const updatedNotes = [...notes, response.newNote];
+            this.allTodos$.next(updatedNotes);
+            console.log(this.allTodos$.value);
+          }
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+
+  deleteTodo(todoId: string) {
+    console.log('todo to be deleted');
   }
 }

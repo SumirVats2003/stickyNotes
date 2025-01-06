@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { TodosResponse } from '../user';
+import { Todos } from '../user';
 import { UserService } from '../services/user/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../services/user/user.service';
 })
 export class TodolistComponent {
   userId = localStorage.getItem('userId');
-  todos: TodosResponse[] | null = [];
+  todos: Todos[] | null = [];
 
   constructor(private userService: UserService) {}
 

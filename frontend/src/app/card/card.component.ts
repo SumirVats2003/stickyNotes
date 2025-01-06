@@ -1,5 +1,6 @@
 import { NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-card',
@@ -11,4 +12,9 @@ export class CardComponent {
   @Input() title = '';
   @Input() desc = '';
   @Input() color = '';
+  @Input() todoId = '';
+
+  constructor(private userService: UserService) {}
+
+  deleteTodo() {}
 }

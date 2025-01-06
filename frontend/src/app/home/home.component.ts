@@ -4,7 +4,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { TodoformComponent } from '../todoform/todoform.component';
 import { TodolistComponent } from '../todolist/todolist.component';
 import { UserService } from '../services/user/user.service';
-import { TodosResponse } from '../user';
+import { Todos } from '../user';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ import { TodosResponse } from '../user';
 export class HomeComponent {
   userId = localStorage.getItem('userId');
   isUserLoggedIn = this.userId ? true : false;
-  todos: TodosResponse[] | null = [];
+  todos: Todos[] | null = [];
 
   constructor(private userService: UserService) {}
 

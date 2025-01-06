@@ -1,8 +1,14 @@
-<form class="todo-form">
+<form class="todo-form" (submit)="handleSubmit()">
   <h3>Add Todo</h3>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Title</label>
-    <input type="text" class="form-control" placeholder="Title" />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Title"
+      name="title"
+      [(ngModel)]="title"
+    />
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label"
@@ -13,6 +19,8 @@
       rows="3"
       placeholder="Description"
       maxlength="100"
+      name="desc"
+      [(ngModel)]="desc"
     ></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
