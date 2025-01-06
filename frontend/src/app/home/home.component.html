@@ -1,0 +1,7 @@
+@if(isUserLoggedIn) {
+<app-navbar />
+<app-todoform />
+<app-todolist />
+} @else {
+<a routerLink="/login">Login</a>
+}

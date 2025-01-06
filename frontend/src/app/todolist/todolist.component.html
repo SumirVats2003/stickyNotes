@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    @for (item of todos; track $index) {
+    <div class="col-md-3">
+      <app-card
+        [title]="item.title"
+        [desc]="item.description"
+        [color]="item.color"
+      />
+    </div>
+    }
+  </div>
+</div>
