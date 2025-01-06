@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../user';
+import { BoldDirective } from '../../directives/bold.directive';
 
 @Component({
   selector: 'app-allusers',
-  imports: [],
+  imports: [BoldDirective],
   templateUrl: './allusers.component.html',
   styleUrl: './allusers.component.css',
 })
