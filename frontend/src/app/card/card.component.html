@@ -1,10 +1,30 @@
 <div class="card" [ngStyle]="{ 'background-color': color }">
   <div class="card-body">
+    @if(editable) {
+    <input type="text" class="form-control mb-3" [(ngModel)]="title" />
+    } @else {
     <h5 class="card-title">{{ title }}</h5>
+    } @if(editable) {
+    <textarea
+      class="form-control mb-3"
+      maxlength="100"
+      [(ngModel)]="desc"
+    ></textarea>
+    } @else {
     <p class="card-text">
       {{ desc }}
     </p>
-    <button type="button" class="btn btn-primary">Edit</button>
+    } @if(editable) {
+
+    <button type="button" class="btn btn-primary" (click)="saveTodo()">
+      Save
+    </button>
+    } @else {
+
+    <button type="button" class="btn btn-primary" (click)="editTodo()">
+      Edit
+    </button>
+    }
     <button type="button" class="btn btn-danger" (click)="deleteTodo()">
       Delete
     </button>

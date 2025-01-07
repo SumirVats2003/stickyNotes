@@ -129,4 +129,18 @@ export class UserService {
         },
       });
   }
+
+  editTodo(todo: TodosParam, todoId: string) {
+    console.log('todo to be edited : ', todoId);
+    this.http
+      .put(`${this.url}/${localStorage.getItem('userId')}/${todoId}`, todo)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          // const filteredData =
+          //   this.allTodos$.value?.filter((item) => item._id != todoId) || [];
+          // this.allTodos$.next(filteredData);
+        },
+      });
+  }
 }
