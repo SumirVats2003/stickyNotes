@@ -21,6 +21,14 @@ export interface Todos {
   description: string;
   title: string;
   userId: string;
+  _id: string;
+}
+
+export interface TodosParam {
+  color: string;
+  description: string;
+  title: string;
+  userId: string;
 }
 
 export interface TodosResponse {
@@ -30,5 +38,6 @@ export interface TodosResponse {
     description: string;
     title: string;
     userId: string;
+    _id: string;
   };
 }

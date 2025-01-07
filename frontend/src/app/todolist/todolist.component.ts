@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { Todos } from '../user';
+import { Todos, TodosParam } from '../user';
 import { UserService } from '../services/user/user.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class TodolistComponent {
       this.userService.getAllNotes(this.userId);
       this.userService.todos.subscribe((data) => {
         this.todos = data;
+        console.log(this.todos);
       });
     }
   }

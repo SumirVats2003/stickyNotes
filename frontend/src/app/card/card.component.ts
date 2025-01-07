@@ -16,5 +16,7 @@ export class CardComponent {
 
   constructor(private userService: UserService) {}
 
-  deleteTodo() {}
+  deleteTodo() {
+    this.userService.deleteTodo(this.todoId);
+  }
 }

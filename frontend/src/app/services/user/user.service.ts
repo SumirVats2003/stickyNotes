@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { LoginResponse, Todos, TodosResponse, User } from '../../user';
+import {
+  LoginResponse,
+  Todos,
+  TodosParam,
+  TodosResponse,
+  User,
+} from '../../user';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -87,7 +93,7 @@ export class UserService {
     });
   }
 
-  addTodo(todo: Todos) {
+  addTodo(todo: TodosParam) {
     console.log(todo);
     this.http
       .post<TodosResponse>(`${this.url}/${todo.userId}/newnote`, todo)
@@ -96,7 +102,10 @@ export class UserService {
           console.log(response);
           if (response.newNote) {
             const notes = this.allTodos$.value || [];
-            const updatedNotes = [...notes, response.newNote];
+            const updatedNotes = [
+              ...notes,
+              { ...response.newNote, _id: response.newNote._id },
+            ];
             this.allTodos$.next(updatedNotes);
             console.log(this.allTodos$.value);
           }
@@ -108,6 +117,16 @@ export class UserService {
   }
 
   deleteTodo(todoId: string) {
-    console.log('todo to be deleted');
+    console.log('todo to be deleted, ', todoId);
+    this.http
+      .delete(`${this.url}/${localStorage.getItem('userId')}/${todoId}`)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          const filteredData =
+            this.allTodos$.value?.filter((item) => item._id != todoId) || [];
+          this.allTodos$.next(filteredData);
+        },
+      });
   }
 }
